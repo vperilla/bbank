@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<tree>
+    <field name="number"/>
+    <field name="from_account" expand="1"/>
+    <field name="to_account" expand="1"/>
+    <field name="amount"/>
+    <field name="effective_date" widget="date" string="Date"/>
+    <field name="effective_date" widget="time" string="Time"/>
+</tree>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<form col="4">
+    <label name="party"/>
+    <field name="party"/>
+    <label name="balance"/>
+    <field name="balance"/>
+    <label name="address"/>
+    <field name="address"/>
+    <label name="hex_address"/>
+    <field name="hex_address"/>
+    <separator name="wallet_mnemonic" colspan="4"/>
+    <field name="wallet_mnemonic" colspan="4"/>
+    <group id="buttons" colspan="4" col="-1">
+        <button name="create_libra_account"/>
+        <button name="mint_libra_account"/>
+        <button name="transfer_libra_account"/>
+    </group>
+    <separator name="events" colspan="4"/>
+    <field name="events" colspan="4"/>
+</form>

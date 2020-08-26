@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<form col="4">
+    <label name="from_account"/>
+    <field name="from_account"/>
+    <newline/>
+    <label name="to_account"/>
+    <field name="to_account"/>
+    <label name="amount"/>
+    <field name="amount"/>
+</form>

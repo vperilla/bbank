@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+      <menuitem name="Bank" id="menu_bank" sequence="1"/>
+
+        <!-- BANK ACCOUTNS -->
+        <record model="ir.ui.view" id="account_view_form">
+            <field name="model">libra.account</field>
+            <field name="type">form</field>
+            <field name="name">account_form</field>
+        </record>
+        <record model="ir.ui.view" id="account_view_tree">
+            <field name="model">libra.account</field>
+            <field name="type">tree</field>
+            <field name="name">account_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_form">
+            <field name="name">Accounts</field>
+            <field name="res_model">libra.account</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_tree"/>
+            <field name="act_window" ref="act_account_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_form"/>
+        </record>
+        <record model="ir.model.button" id="create_libra_account_button">
+            <field name="name">create_libra_account</field>
+            <field name="string">Create Libra Account</field>
+            <field name="model"
+                search="[('model', '=', 'libra.account')]"/>
+        </record>
+        <record model="ir.model.button" id="mint_libra_account_button">
+            <field name="name">mint_libra_account</field>
+            <field name="string">Mint</field>
+            <field name="model"
+                search="[('model', '=', 'libra.account')]"/>
+        </record>
+        <record model="ir.model.button" id="transfer_libra_account_button">
+            <field name="name">transfer_libra_account</field>
+            <field name="string">Transfer</field>
+            <field name="model"
+                search="[('model', '=', 'libra.account')]"/>
+        </record>
+        <menuitem parent="menu_bank" action="act_account_form"
+            id="menu_account_form" sequence="10"/>
+
+        <!-- BANK ACCOUTNS TRANSFERS -->
+        <record model="ir.ui.view" id="event_view_form">
+            <field name="model">libra.account.event</field>
+            <field name="type">form</field>
+            <field name="name">event_form</field>
+        </record>
+        <record model="ir.ui.view" id="event_view_tree">
+            <field name="model">libra.account.event</field>
+            <field name="type">tree</field>
+            <field name="name">event_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_event_form">
+            <field name="name">Events</field>
+            <field name="res_model">libra.account.event</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_event_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="event_view_tree"/>
+            <field name="act_window" ref="act_event_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_event_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="event_view_form"/>
+            <field name="act_window" ref="act_event_form"/>
+        </record>
+        <menuitem parent="menu_bank" action="act_event_form"
+            id="menu_event_form" sequence="10"/>
+
+        <!-- MINT FORM -->
+        <record model="ir.ui.view" id="mint_view_form">
+            <field name="model">libra.account.mint</field>
+            <field name="type">form</field>
+            <field name="name">mint_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_mint_account">
+            <field name="name">Mint</field>
+            <field name="wiz_name">libra.account.mint.wizard</field>
+            <field name="model">libra.account</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_mint_account_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">libra.account,-1</field>
+            <field name="action" ref="wizard_mint_account"/>
+        </record>
+
+        <!-- TRANSFER FORM -->
+        <record model="ir.ui.view" id="transfer_view_form">
+            <field name="model">libra.account.transfer</field>
+            <field name="type">form</field>
+            <field name="name">transfer_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_transfer_account">
+            <field name="name">Mint</field>
+            <field name="wiz_name">libra.account.transfer.wizard</field>
+            <field name="model">libra.account</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_transfer_account_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">libra.account,-1</field>
+            <field name="action" ref="wizard_transfer_account"/>
+        </record>
+
+    </data>
+</tryton>

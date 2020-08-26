@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<form col="4">
+    <label name="effective_date"/>
+    <field name="effective_date"/>
+</form>
