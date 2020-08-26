@@ -8,6 +8,8 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.tools import grouped_slice, reduce_ids
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
 
 from libra_client import Client, WalletLibrary
 
@@ -126,7 +128,10 @@ class LibraAccountEvent(ModelSQL, ModelView):
 class LibraAccountMintForm(ModelView):
     'Libra Account Mint Form'
     __name__ = 'libra.account.mint'
-    amount = fields.Numeric('Amount', digits=_digits)
+    amount = fields.Numeric('Amount', digits=_digits,
+        domain=[
+            ('amount', '>', Decimal('0.0')),
+        ])
 
     @staticmethod
     def default_amount():
@@ -146,6 +151,10 @@ class LibraAccountMint(Wizard):
 
     def transition_handle(self):
         pool = Pool()
+        if self.ask.amount < Decimal('0.0'):
+            raise UserError(
+                gettext('bbank.negative_mint',
+                    account=self.record.rec_name))
         try:
             Event = pool.get('libra.account.event')
             account = self.record
