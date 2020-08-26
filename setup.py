@@ -54,7 +54,7 @@ for build in ['CI_BUILD_NUMBER', 'CI_JOB_NUMBER', 'CI_JOB_ID']:
 if local_version:
     version += '+' + '.'.join(local_version)
 
-requires = []
+requires = ['libra-client']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
